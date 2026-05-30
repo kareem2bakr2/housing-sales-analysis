@@ -1,193 +1,123 @@
-Housing Sales Analysis and Price Prediction
-Project Overview
+# Housing Sales Analysis and Price Prediction
 
-This project analyzes housing sales data to uncover factors affecting property prices and builds machine learning models to predict housing sale prices.
+## Project Overview
 
-The project includes:
+This project presents a complete end-to-end data analytics and machine learning workflow for housing sales data. The objective was to analyze factors affecting house prices, generate business insights through data visualization, and develop a predictive model capable of estimating housing sale prices.
 
-Data Cleaning and Preprocessing
-Exploratory Data Analysis (EDA)
-Interactive Power BI Dashboard
-Feature Engineering
-Principal Component Analysis (PCA)
-Regression Modeling
-Hyperparameter Optimization using GridSearchCV
-Dataset Information
+The project combines data cleaning, exploratory data analysis (EDA), feature engineering, dimensionality reduction, machine learning, and interactive dashboard development using Power BI.
 
-The dataset contains housing sales information including:
+## Dataset
 
-Feature	Description
-AREA	Property Area
-INT_SQFT	Interior Square Feet
-N_BEDROOM	Number of Bedrooms
-N_BATHROOM	Number of Bathrooms
-N_ROOM	Total Rooms
-DIST_MAINROAD	Distance from Main Road
-PARK_FACIL	Parking Availability
-BUILDTYPE	Building Type
-SALES_PRICE	Target Variable
+The dataset contains information about residential properties, including location, property size, number of rooms, building type, quality scores, utility availability, registration fees, commission fees, and final sales prices.
 
-Target Variable:
+The target variable is:
 
-SALES_PRICE
+**SALES_PRICE**
 
-Data Cleaning
+## Data Cleaning and Preprocessing
 
-The following preprocessing steps were performed:
+Several preprocessing steps were performed to improve data quality and ensure reliable analysis:
 
-Removed missing values from:
-N_BEDROOM
-N_BATHROOM
-Filled missing values in:
-QS_OVERALL (Mean Imputation)
-Corrected inconsistent categorical values:
+* Removed records with missing bedroom and bathroom information.
+* Filled missing values in the overall quality score using mean imputation.
+* Removed inconsistencies and spelling errors in categorical columns such as Area, Build Type, Street Type, Utility Availability, Sale Condition, and Parking Facility.
+* Converted sale and construction dates into datetime format.
+* Identified potential outliers using boxplot analysis.
+* Created additional time-based features from sales dates.
 
-Examples:
+A cleaned version of the dataset was exported for use in Power BI dashboard development.
 
-Column	Correction
-Noo → No	PARK_FACIL
-Comercial → Commercial	BUILDTYPE
-Chormpet → Chrompet	AREA
-Pavd → Paved	STREET
-Converted date columns to datetime format.
-Exploratory Data Analysis
+## Exploratory Data Analysis
 
-Key analyses performed:
+Exploratory analysis was conducted to understand housing market behavior and identify key factors influencing property prices.
 
-Average Housing Price by Area
+Key analyses included:
 
-Identified the top-performing residential areas based on average sales price.
+* Average sales price by area.
+* Top-performing residential locations.
+* Housing sales trends over time.
+* Distribution of numerical features.
+* Outlier detection using boxplots.
+* Relationships between property characteristics and sales prices.
 
-Yearly Sales Trend
+## Feature Engineering
 
-Analyzed total housing sales over time using:
+Categorical variables were transformed into numerical representations using:
 
-Bar Chart
-Trend Line
-Outlier Detection
+* Label Encoding for Area, Street, Zone, and Building Type.
+* One-Hot Encoding for Parking Facility.
+* Custom ordinal encoding for Utility Availability and Sale Conditions.
 
-Used boxplots to detect potential outliers across numerical features.
+Numerical features such as registration fees and commission fees were standardized using StandardScaler to improve model performance.
 
-Feature Engineering
-Encoding
-Label Encoding
+## Dimensionality Reduction
 
-Applied to:
+Principal Component Analysis (PCA) was applied to reduce feature dimensionality while retaining most of the dataset's information. Based on cumulative explained variance analysis, six principal components were selected for model training.
 
-AREA
-STREET
-MZZONE
-BUILDTYPE
-One-Hot Encoding
+## Machine Learning Models
 
-Applied to:
+Multiple regression algorithms were trained and evaluated to predict housing sales prices:
 
-PARK_FACIL
-Ordinal Encoding
+* Linear Regression
+* K-Nearest Neighbors Regressor
+* Decision Tree Regressor
+* Random Forest Regressor
+* XGBoost Regressor
 
-UTILITY_AVAIL
+Models were compared using the following evaluation metrics:
 
-AllPub = 3
-NoSeWa = 2
-NoSewr = 1
-ELO = 0
+* R² Score
+* Mean Absolute Error (MAE)
+* Mean Squared Error (MSE)
 
-SALE_COND
+## Model Optimization
 
-Normal Sale = 4
-AdjLand = 3
-Family = 2
-Partial = 1
-AbNormal = 0
-Feature Scaling
+Hyperparameter tuning was performed using GridSearchCV on the Random Forest Regressor to identify the optimal configuration and improve prediction accuracy.
 
-StandardScaler applied to:
+The final model was trained using the best-performing parameters and achieved the highest predictive performance among all tested algorithms.
 
-REG_FEE
-COMMIS
-Dimensionality Reduction
+## Power BI Dashboard
 
-Principal Component Analysis (PCA) was applied.
+An interactive Power BI dashboard was developed using the cleaned dataset to provide business insights and support decision-making.
 
-The cumulative explained variance plot indicated that:
+The dashboard includes:
 
-6 principal components retained most of the variance.
-Machine Learning Models
+* Sales Overview
+* Average Price by Area
+* Sales Trend Analysis
+* Property Distribution by Building Type
+* Key Performance Indicators (KPIs)
+* Interactive Filters and Visualizations
 
-The following regression algorithms were evaluated:
+## Technologies Used
 
-Model
-Linear Regression
-K-Nearest Neighbors
-Decision Tree Regressor
-Random Forest Regressor
-XGBoost Regressor
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-Learn
+* XGBoost
+* Jupyter Notebook
+* Power BI
 
-Evaluation Metrics:
+## Project Workflow
 
-R² Score
-MAE
-MSE
-Model Selection
+Raw Dataset → Data Cleaning → Exploratory Data Analysis → Feature Engineering → Data Scaling → PCA → Model Training → Hyperparameter Tuning → Prediction → Power BI Dashboard
 
-Models were compared using R² score.
+## Key Outcomes
 
-Best-performing model:
+* Improved data quality through comprehensive preprocessing.
+* Identified important factors affecting housing prices.
+* Developed and compared multiple machine learning regression models.
+* Optimized model performance using GridSearchCV.
+* Built an interactive Power BI dashboard for business reporting and decision support.
+* Created a complete data analytics and machine learning pipeline from raw data to actionable insights.
 
-Random Forest Regressor
+## Author
 
-Hyperparameter tuning was performed using GridSearchCV.
+Kareem Bakr
 
-Best Parameters:
+Computer and Systems Engineering Student | Data Analyst | Front-End Developer
 
-criterion='poisson'
-max_features=None
-min_samples_leaf=1
-min_samples_split=3
-Power BI Dashboard
-
-The dashboard provides:
-
-Sales Overview
-Sales by Area
-Sales by Build Type
-Sales Trend Analysis
-Housing Market Insights
-
-(Add dashboard screenshots here)
-
-Technologies Used
-Python
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Scikit-Learn
-XGBoost
-Power BI
-Jupyter Notebook
-Project Workflow
-Raw Dataset
-      ↓
-Data Cleaning
-      ↓
-EDA
-      ↓
-Feature Engineering
-      ↓
-Scaling
-      ↓
-PCA
-      ↓
-Model Training
-      ↓
-Hyperparameter Tuning
-      ↓
-Prediction
-      ↓
-Power BI Dashboard
-CV Project Description
-
-You can put this on your CV:
-
-Developed an end-to-end housing sales analytics solution using Python and Power BI. Performed data cleaning, exploratory analysis, feature engineering, dimensionality reduction (PCA), and predictive modeling using Random Forest and XGBoost. Built an interactive Power BI dashboard to visualize housing market trends and key business insights.
+This project demonstrates practical experience in data analysis, machine learning, data visualization, and business intelligence using real-world housing sales data.
