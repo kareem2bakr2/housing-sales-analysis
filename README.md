@@ -113,11 +113,3 @@ Raw Dataset → Data Cleaning → Exploratory Data Analysis → Feature Engineer
 * Optimized model performance using GridSearchCV.
 * Built an interactive Power BI dashboard for business reporting and decision support.
 * Created a complete data analytics and machine learning pipeline from raw data to actionable insights.
-
-## Author
-
-Kareem Bakr
-
-Computer and Systems Engineering Student | Data Analyst | Front-End Developer
-
-This project demonstrates practical experience in data analysis, machine learning, data visualization, and business intelligence using real-world housing sales data.
